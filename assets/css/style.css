@@ -196,6 +196,10 @@ header .container {
   align-items: center;
 }
 
+header .container .logo img {
+  width: 150px;
+}
+
 .navbar-menu-btn {
   font-size: 30px;
   padding: 5px;
@@ -495,6 +499,10 @@ textarea {
 /*-----------------------------------*\ 
  * #FOOTER
 \*-----------------------------------*/
+
+footer .logo img {
+  width: 150px;
+}
 
 footer { background: var(--white-2); }
 
