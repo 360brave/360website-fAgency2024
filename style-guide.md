@@ -1,4 +1,4 @@
-# Funel Style Guide
+## LP Style Documentation
 
 ## Html import links
 
