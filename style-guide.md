@@ -1,4 +1,4 @@
-## LP Style Documentation
+## LP Style Documentation Guide
 
 ## Html import links
 
