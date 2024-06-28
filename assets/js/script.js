@@ -86,3 +86,59 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+/**
+ * script for the language dropdown menu
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const flagLinks = document.querySelectorAll('.flag-link');
+
+  flagLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const language = this.getAttribute('data-lang');
+          localStorage.setItem('preferredLanguage', language);
+          if (language === 'en' && window.location.pathname !== '/index.html') {
+              window.location.href = 'index.html';
+          } else if (language === 'he' && window.location.pathname !== '/he-il.html') {
+              window.location.href = 'he-il.html';
+          }
+      });
+  });
+
+  const preferredLanguage = localStorage.getItem('preferredLanguage');
+  if (preferredLanguage) {
+      if (preferredLanguage === 'he' && window.location.pathname !== '/he-il.html') {
+          window.location.href = 'he-il.html';
+      } else if (preferredLanguage === 'en' && window.location.pathname !== '/index.html') {
+          window.location.href = 'index.html';
+      }
+  } else {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(success, error);
+      } else {
+          if (window.location.pathname !== '/index.html') {
+              window.location.href = 'index.html';  // Redireciona para inglês se a geolocalização não for suportada
+          }
+      }
+  }
+
+  function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      
+      // Define os limites aproximados de Israel
+      const isInIsrael = latitude >= 29.3 && latitude <= 33.3 && longitude >= 34.3 && longitude <= 35.9;
+      
+      if (isInIsrael && window.location.pathname !== '/he-il.html') {
+          window.location.href = 'he-il.html';
+      } else if (!isInIsrael && window.location.pathname !== '/index.html') {
+          window.location.href = 'index.html';
+      }
+  }
+
+  function error() {
+      if (window.location.pathname !== '/index.html') {
+          window.location.href = 'index.html';  // Redireciona para inglês em caso de erro
+      }
+  }
+});
