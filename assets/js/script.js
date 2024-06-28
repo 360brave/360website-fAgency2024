@@ -105,22 +105,22 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 
-  const preferredLanguage = localStorage.getItem('preferredLanguage');
-  if (preferredLanguage) {
-      if (preferredLanguage === 'he' && window.location.pathname !== '/he-il.html') {
-          window.location.href = 'he-il.html';
-      } else if (preferredLanguage === 'en' && window.location.pathname !== '/index.html') {
-          window.location.href = 'index.html';
-      }
-  } else {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(success, error);
-      } else {
-          if (window.location.pathname !== '/index.html') {
-              window.location.href = 'index.html';  // Redireciona para inglês se a geolocalização não for suportada
-          }
-      }
-  }
+  //const preferredLanguage = localStorage.getItem('preferredLanguage');
+  //if (preferredLanguage) {
+      //if (preferredLanguage === 'he' && window.location.pathname !== '/he-il.html') {
+          //window.location.href = 'he-il.html';
+      //} else if (preferredLanguage === 'en' && window.location.pathname !== '/index.html') {
+          //window.location.href = 'index.html';
+      //}
+  //} else {
+      //if (navigator.geolocation) {
+          //navigator.geolocation.getCurrentPosition(success, error);
+      //} else {
+          //if (window.location.pathname !== '/index.html') {
+              //window.location.href = 'index.html';  // Redireciona para inglês se a geolocalização não for suportada
+          //}
+      //}
+  //}
 
   function success(position) {
       const latitude = position.coords.latitude;
